@@ -1,0 +1,36 @@
+<launch>
+    <!-- Launch file for Livox AVIA LiDAR -->
+
+    <arg name="rviz" default="true" />
+      <rosparam command="load" file="$(find std_detector)/config/config_livox.yaml" />
+<!--      <rosparam command="load" file="$(find std_detector)/config/config_online.yaml" />-->
+<!--    <rosparam command="load" file="$(find std_detector)/config/config_kitti.yaml" />-->
+<!--    <node-->
+<!--            pkg="std_detector"-->
+<!--            type="place_recognition_livox"-->
+<!--            name="place_recognition_livox"-->
+<!--            output="screen"-->
+<!--    />-->
+    <node
+            pkg="std_detector"
+            type="online_demo"
+            name="online_demo"
+            output="screen"
+    />
+<!--      <param name="bag_path" type="string" value = "/home/cyz/下载/dockerCodes/STD-master/livox_dataset/park2.bag"/>-->
+<!--    <param name="pose_path" type="string" value = "/home/cyz/下载/dockerCodes/STD-master/livox_dataset/park2_pose.txt"/>-->
+
+<!--      <param name="bag_path" type="string" value = "/media/cyz/Seagate Basic/rosbags/20230314-os128-mid360/helmet-2023-03-14-jiaowu.bag"/>-->
+<!--      <param name="pose_path" type="string" value = "/home/cyz/下载/dockerCodes/STD-master/livox_dataset/hel-jaowu-pos-fastliosam.txt"/>-->
+<!--        <param name="bag_path" type="string" value = "/home/cyz/下载/dockerCodes/STD-master/livox_dataset/2023-03-14-09-32-01-tank-wuzhou-os128.bag"/>-->
+<!--      <param name="pose_path" type="string" value = "/home/cyz/workspace/catkin_main/src/FAST_LIO-main/PCD/odomPoses-os128-wuzhou.txt"/>-->
+<!--    <param name="pose_path" type="string" value = "/media/cyz/Seagate Basic/openDatasets/NCLT/2012-6-15/nclt_6.txt"/>-->
+<!--    <param name="bag_path" type="string" value = "/media/cyz/Seagate Basic/openDatasets/NCLT/2012-6-15/2012-06-15_velodyne.bag"/>-->
+<!--    <param name="pose_path" type="string" value = "/home/cyz/workspace/catkin_main/src/FAST_LIO-main/PCD/odomPoses-hel-wuzhou.txt"/>-->
+<!--    <param name="bag_path" type="string" value = "/home/cyz/下载/dockerCodes/STD-master/livox_dataset/hel-mid-undistorScan-wuzhou.bag"/>-->
+1
+    <group if="$(arg rviz)">
+        <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz_std" args="-d $(find std_detector)/rviz_cfg/online.rviz" />
+    </group>
+
+</launch>
